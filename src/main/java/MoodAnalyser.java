@@ -1,6 +1,10 @@
 public class MoodAnalyser {
-	
-	public static void main(String[] args) {
-		System.out.println("Welcome to Mood Analyser Exception Project");
+	public String analyseMood(String message){
+		if(message.equalsIgnoreCase("I am in sad mood")) {
+			return "SAD";
+		}
+		else {	
+			return "HAPPY";
+		}
 	}
 }
