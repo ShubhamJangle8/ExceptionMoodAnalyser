@@ -1,10 +1,25 @@
+import java.util.Scanner;
+
 public class MoodAnalyser {
-	public String analyseMood(String message){
-		if(message.equalsIgnoreCase("I am in sad mood")) {
-			return "SAD";
+	String message;
+	public MoodAnalyser() {
+		
+	}
+	public MoodAnalyser(String message) {
+		this.message = message;
+	}
+	public String analyseMood(){
+		Scanner sc = new Scanner(System.in);
+		try {
+			if(message.equalsIgnoreCase("I am in sad mood")) {
+				return "SAD";
+			}
+			else {	
+				return "HAPPY";
+			}
 		}
-		else {	
+		catch(NullPointerException Null) {
 			return "HAPPY";
 		}
-	}
+	}	
 }
