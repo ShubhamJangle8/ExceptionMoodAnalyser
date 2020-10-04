@@ -7,10 +7,15 @@ public class MoodAnalyser {
 		this.message = message;
 	}
 	public String analyseMood(){
-		if(message.equalsIgnoreCase("I am in sad mood")) {
-			return "SAD";
+		try {
+			if(message.equalsIgnoreCase("I am in sad mood")) {
+				return "SAD";
+			}
+			else {	
+				return "HAPPY";
+			}
 		}
-		else {	
+		catch(NullPointerException Null) {
 			return "HAPPY";
 		}
 	}	
