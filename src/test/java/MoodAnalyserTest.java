@@ -1,49 +1,42 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-public class MoodAnalyserTest {
-	//TEST FOR SAD MOOD
-		@Test
-		public void givenMood_WhenSad_ShouldReturnSad() {
-			try {
-				MoodAnalyser mood = new MoodAnalyser("I am in Sad mood");
-				assertEquals("SAD", mood.analyseMood());
-			}
-			catch(MoodAnalysisException e) {
-				System.out.println(e);
-			}
+class MoodAnalyserTest {
+	public static MoodAnalyser moodanalyser;
+	@Test
+	void givenMessage_whensad_returnSadMood() {
+		MoodAnalyser moodanalyzer = new MoodAnalyser("I am in Sad Mood");
+		String testcase1 = "I am in Sad Mood";
+		try {
+			testcase1 = moodanalyzer.analyseMood();
+		} catch (MoodAnalysisException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		//testing HAPPY MOOD
-		@Test
-		public void givenMood_WhenInAnyMood_ShouldReturnHappy() {
-			try {
-				MoodAnalyser mood = new MoodAnalyser("I am in Any mood");
-				assertEquals("HAPPY", mood.analyseMood());
-			}
-			catch(MoodAnalysisException e) {
-				System.out.println(e);
-			}
+		assertEquals("SAD", testcase1);
+	}
+	@Test
+	void givenMessage_whenAnyMood_returnHAPPY() {
+		MoodAnalyser moodanalyzerobj1 = new MoodAnalyser("I am Happy Mood");
+		try {
+			assertEquals("HAPPY", moodanalyzerobj1.analyseMood());
+		} catch (MoodAnalysisException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		//testing NULL
-		@Test
-		public void givenMood_WhenNull_ShouldThrowMoodAnalysisException() {
-			try {
-				MoodAnalyser mood = new MoodAnalyser(null);
-				assertEquals("HAPPY", mood.analyseMood());
-			}
-			catch(MoodAnalysisException e) {
-				System.out.println(e);
-			}
-		}
-		//testing EMPTY
-		@Test
-		public void givenMood_WhenEmpty_ShouldThrowMoodAnalysisException() {
-			try {
-				MoodAnalyser mood = new MoodAnalyser("");
-				assertEquals("HAPPY", mood.analyseMood());
-			}
-			catch(MoodAnalysisException e) {
-				System.out.println(e);
-			}
-		}
+	}
+	@Test
+	void givenMessage_whenNull_shouldThrow_MoodAnalyserException() {
+		MoodAnalyser moodanalyzer = new MoodAnalyser(null);
+		Assertions.assertThrows(MoodAnalysisException.class, () -> {
+			moodanalyzer.analyseMood();
+		});
+	}
+	@Test
+	void givenMessage_whenEmpty_shouldThrow_MoodAnalyserException() {
+		MoodAnalyser moodanalyzer = new MoodAnalyser("");
+		Assertions.assertThrows(MoodAnalysisException.class, () -> {
+			moodanalyzer.analyseMood();
+		});
+	}
 }
-
